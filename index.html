@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Application Tracking System</title>
+
+ <img src="https://ingrain.us/images/logo.png"alt="logo" class="img-responsive" >
+
+<H2>
+<center>
+<div class="p-3 mb-2 bg-secondary text-white">List of Applicants</div>
+    </h2>
+     <marquee direction = "right"> 
+      <div class="p-3 mb-2 bg-warning text-dark"><H4>WELCOME TO INGRAIN SYSTEMS PRIVATE LIMITED!!!</H4><div>
+     </marquee>
+ 
+      <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+    
+
+
+   
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+body {
+  font-family: Arial;
+ 
+}
+
+* {
+  box-sizing: border-box;
+
+
+}
+
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+} 
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+ .table td, .table th {
+    padding: -0.25rem;
+    vertical-align: top;
+    border-top: 2px solid #dee2e6;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 2.5;
+    color: #21255C;
+    text-align: left;
+    box-sizing: unset;
+    }
+
+form.example button:hover {
+  background: #0b7dda;
+ 
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+   
+}
+</style>
+
+     
+
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+crossorigin="anonymous">
+
+
+     <link rel = "icon" href =
+"https://media-exp1.licdn.com/dms/image/C560BAQFzxTMS7xtQtA/company-logo_200_200/0/1621322617080?e=2159024400&v=beta&t=9JyStD9CQa7agH7T1AkukFmHkVCSmOKm-KiR7ptY0j8"
+        type = "image/x-icon">
+        
+    </head>
+     
+ 
+          
+    <body>
+   
+
+    
+  
+</form>
+</form>
+</head>
+<body>
+
+
+<div class="container my-2">
+
+
+
+<a th:href = "@{/showNewEmployeeForm}" class="btn btn-primary btn-sm mb-3"> Add Candidate </a>
+<form th:action="@{/search}" method="get">
+			<input type="text" name="keyword" th:value="${keyword}" placeholder="Search..."
+				size="50">
+			<button type="submit" class="btn btn-info">Search</button>
+			<button type="submit" class="btn btn-info">Reset</button>
+		</form>
+
+<table border="1" class = "table table-striped table-responsive-md">
+<thead>
+<tr>
+
+<th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=candidatename&sortDir=' + ${reverseSortDir}}">
+Candidate Full Name</a>
+</th>
+<th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=email&sortDir=' + ${reverseSortDir}}">
+Email Id</a>
+</th>
+<th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=experience&sortDir=' + ${reverseSortDir}}">
+Experience</a>
+</th>
+</th>
+<th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=phoneno&sortDir=' + ${reverseSortDir}}">
+Phone No.</a>
+</th>
+</th>
+<th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=title&sortDir=' + ${reverseSortDir}}">
+Title</a>
+</th>
+</th>
+<th>Actions</th>
+
+</tr>
+
+
+</thead>
+<tbody>
+
+<tr th:each="employee : ${listEmployees}">
+
+<td th:text="${employee.candidatename}"></td>
+<td th:text="${employee.email}"></td>
+<td th:text="${employee.experience}"></td>
+<td th:text="${employee.phoneno}"></td>
+<td th:text="${employee.title}"></td>
+
+	
+<div>
+<td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">Update</a>
+   <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger">Delete</a>
+       <a th:href="@{/viewapplication/{id}(id=${employee.id})}" class="btn btn-primary">View Application</a> 
+       <br>
+       Upload Resume:
+       {maximumsize:10 MB}
+            <form id="uploadFiles" name="uploadFiles" method="post" th:action=@{/uploadFiles} encType="multipart/form-data">
+       <input type="file" name="files" multiple required />
+       <button type="submit">Submit</button>
+     </form>
+</td>
+</tr>
+</tbody>
+</table>
+	
+<a th:href = "@{/dashboard}" class="btn btn-primary btn-sm mb-3"> Return to Dashboard </a>	
+					
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/}]]";
+    }
+</script>
+
+<div th:if = "${totalPages > 1}">
+<div class = "row col-sm-10">
+<div class = "col-sm-2">
+Total Rows: [[${totalItems}]]
+</div>
+<div class = "col-sm-1">
+<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+<a th:if="${currentPage != i}" th:href="@{'/page1/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+</span>
+</div>
+<div class = "col-sm-1">
+<a th:if="${currentPage < totalPages}" th:href="@{'/page1/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+<span th:unless="${currentPage < totalPages}">Next</span>
+</div>
+
+<div class="col-sm-1">
+    <a th:if="${currentPage < totalPages}" th:href="@{'/page1/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+<span th:unless="${currentPage < totalPages}">Last</span>
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>

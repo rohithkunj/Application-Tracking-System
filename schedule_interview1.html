@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Schedule Interview</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+
+ <img src="https://ingrain.us/images/logo.png"alt="logo" class="img-responsive" >
+
+
+
+<h2>
+<center>
+
+<div class="p-3 mb-2 bg-secondary text-white"><centre>Schedule Interview</div>
+    </h2>
+    
+<form action="#" th:action="@{/saveScheduleInterview}" th:object="${scheduleinterview}"
+			method="POST">
+			<input type="text" th:field="*{employeename}"
+				placeholder=" Candidate Full name" class="form-control mb-4 col-4">
+				
+				<input type="text" th:field="*{jobtitle}"
+				placeholder="Job Title" class="form-control mb-4 col-4">
+				
+				
+				<label for="">Interview Type: </label>
+			
+		<input type="radio" name="interviewtype"  value="Online" required> ONLINE 
+			<input type="radio" name="interviewtype"   value="Walk-in-drive" required> Walk-In-Drive
+				
+			
+		
+				<input type="text" th:field="*{emailid}"
+				placeholder=" EmailId" class="form-control mb-4 col-4">
+				<label for="">Stages </label>
+				<select class="form-control mb-4 col-4" name="stages" required>
+					<option value="" selected hidden>Select stage</option>
+					<option value="Hr screening">HR SCREENING</option>
+					<option value="TR Round">TR ROUND</option>
+					<option value="Hr Round">HR ROUND</option>
+					</select>
+				Interview Date:
+			<input type="text" th:field="*{interviewdate}"
+				placeholder="dd/mm/yyyy" class="form-control mb-4 col-4">
+				Interview Time:
+				<input type="text" th:field="*{interviewtime}"
+				placeholder="--:-- am/pm" class="form-control mb-4 col-4">
+				Interview Duration :
+				<input type="text" th:field="*{interviewduration}"
+				placeholder="--:--	minutes/hours" class="form-control mb-4 col-4">
+				
+				<input type="text" th:field="*{note}"
+				placeholder="Note for interviewer" class="form-control mb-4 col-4">
+				
+				
+				
+				<button type="submit" class="btn btn-info col-2"> Save and View Scheduled Interviews</button>
+		
+		</form>
+		
+		<hr>
+		</div>
+		
+		
+		
+		
+</body>
+</html>

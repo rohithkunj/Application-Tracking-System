@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View application </title>
+ <img src="https://ingrain.us/images/logo.png"alt="logo" class="img-responsive" width="180px" height="80px">
+ 
+ <centre>
+<h2><div class="p-3 mb-2 bg-secondary text-white">View Technical feedback of applicant</div>
+    </h2>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+	<style>
+	span.navigation {
+color: #000000;
+float:right;
+}
+
+/* unvisited link */
+a.navigation:link {
+color:#000000; 
+text-decoration:none;
+}
+
+/* unvisited link */
+a.navigation:visited {
+color:#000000; 
+text-decoration:none;
+}
+
+/* mouse over link */
+a.navigation:hover {
+color:#FF0000; 
+text-decoration:none;
+} 
+
+/* mouse over link */
+a.navigation:active {
+color:#FF0000; 
+text-decoration:none;
+}  
+span.navigationSpace {
+    padding-left: 100px;
+}
+
+	
+	</style>
+	
+</head>
+<body>
+   
+		<a th:href = "@{/addfeedback}"> Back </a>
+		<table border="1" class = "table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>
+						<a th:href="@{'/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">
+							id</a>
+					</th>
+					<th>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=candidateName&sortDir=' + ${reverseSortDir}}">
+							 candidateName</a>
+					</th>
+					<th>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=job title&sortDir=' + ${reverseSortDir}}">
+	                   job title</a>
+					</th>
+						<th>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=interviewerName&sortDir=' + ${reverseSortDir}}">
+							 interviewer Name</a>
+					</th>
+					</th>
+						<th>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=Primary skills&sortDir=' + ${reverseSortDir}}">
+							Primary skills and Rating</a>
+					</th>
+					<th>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=skillarea&sortDir=' + ${reverseSortDir}}">
+						 skill area</a>
+					</th>
+					<th>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=notes&sortDir=' + ${reverseSortDir}}">
+							notes</a>
+					</th>
+				
+						<th>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=rating&sortDir=' + ${reverseSortDir}}">
+							Overall rating</a>
+					</th>
+					</th>
+						<th>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=result&sortDir=' + ${reverseSortDir}}">
+							 result</a>
+					</th>
+	
+	
+	
+	
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="feedback : ${listApplicants}">
+					<td th:text="${feedback.id}"></td>
+					<td th:text="${feedback.candidateName}"></td>
+					<td th:text="${feedback.jobtitle}"></td>
+					<td th:text="${feedback.interviewerName}"></td>
+					<td th:text="${feedback.primaryskillsRating}"></td>
+					<td th:text="${feedback.skillarea}"></td>
+					<td th:text="${feedback.notes}"></td>
+					<td th:text="${feedback.overallRating}"></td>
+					<td th:text="${feedback.result}"></td>
+					
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+<div th:if = "${totalPages > 1}">
+<div class = "row col-sm-10">
+<div class = "col-sm-2">
+Total Rows: [[${totalItems}]]
+</div>
+<div class = "col-sm-1">
+<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+<a th:if="${currentPage != i}" th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+</span>
+</div>
+<div class = "col-sm-1">
+<a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+<span th:unless="${currentPage < totalPages}">Next</span>
+</div>
+
+<div class="col-sm-1">
+    <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+<span th:unless="${currentPage < totalPages}">Last</span>
+    </div>
+</div>
+</div>
+
+		<hr>
+		
+		<a th:href = "@{/}"><b> Back to List of Applicants</b></a><span class="navigationSpace"/>
+		<a th:href = "@{/addfeedback}"><b> Return to add feedback</b></a><span class="navigationSpace"/>
+		<a th:href = "@{#}"><b> schedule HR interview</b></a><span class="navigationSpace"/>
+		<a th:href = "@{/dashboard}"> <b>Return to Dashboard</b></a>
+	</div>
+
+</body>
+</html>

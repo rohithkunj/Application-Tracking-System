@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View Scheduled Interviews</title>
+
+ <img src="https://ingrain.us/images/logo.png"alt="logo" class="img-responsive" width="180px" height="80px">
+
+<H2>
+<center>
+<div class="p-3 mb-2 bg-secondary text-white">View Scheduled Interviews</div>
+    </h2>
+     
+ 
+      <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+    
+
+
+   
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+
+
+
+
+
+ .table td, .table th {
+    padding: -0.25rem;
+    vertical-align: top;
+    border-top: 2px solid #dee2e6;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 2.5;
+    color: #21255C;
+    text-align: left;
+    box-sizing: unset;
+    }
+
+form.example button:hover {
+  background: #0b7dda;
+ 
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+   
+}
+</style>
+
+     
+
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+crossorigin="anonymous">
+
+
+     <link rel = "icon" href =
+"https://media-exp1.licdn.com/dms/image/C560BAQFzxTMS7xtQtA/company-logo_200_200/0/1621322617080?e=2159024400&v=beta&t=9JyStD9CQa7agH7T1AkukFmHkVCSmOKm-KiR7ptY0j8"
+        type = "image/x-icon">
+        
+    </head>
+     
+ 
+          
+    <body>
+   
+
+    
+ 
+</form>
+</form>
+</head>
+<body>
+
+
+<div class="container my-2">
+
+
+
+<table border="1" class = "table table-striped table-responsive-md">
+<thead>
+<tr>
+<th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=employeename&sortDir=' + ${reverseSortDir}}">
+Employee Name</a>
+</th>
+<th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=jobtitle&sortDir=' + ${reverseSortDir}}">
+Job Title</a>
+</th>
+<th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=interviewtype&sortDir=' + ${reverseSortDir}}">
+Interview Type</a>
+</th>
+<th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=emailid&sortDir=' + ${reverseSortDir}}">
+Email Id</a>
+</th>
+</th>
+<th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=stages&sortDir=' + ${reverseSortDir}}">
+Stages</a>
+</th>
+</th>
+<th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=interviewdate&sortDir=' + ${reverseSortDir}}">
+Interview Date</a>
+</th>
+</th><th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=interviewtime&sortDir=' + ${reverseSortDir}}">
+Interview Time</a>
+</th>
+</th><th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=interviewduration&sortDir=' + ${reverseSortDir}}">
+Interview Duration</a>
+</th>
+</th><th>
+<a th:href="@{'/page/' + ${currentPage} + '?sortField=note&sortDir=' + ${reverseSortDir}}">
+Notes</a>
+</th>
+</th>
+
+
+
+</tr>
+
+</thead>
+<tbody>
+
+
+
+<tr th:each="scheduleinterview : ${listInterviews}">
+<td th:text="${scheduleinterview. employeename}"></td>
+<td th:text="${scheduleinterview.jobtitle}"></td>
+<td th:text="${scheduleinterview.interviewtype}"></td>
+<td th:text="${scheduleinterview.emailid}"></td>
+<td th:text="${scheduleinterview.stages}"></td>
+<td th:text="${scheduleinterview.interviewdate}"></td>
+<td th:text="${scheduleinterview.interviewtime}"></td>
+<td th:text="${scheduleinterview.interviewduration}"></td>
+<td th:text="${scheduleinterview.note}"></td>
+
+		
+<div>
+
+</tr>
+</tbody>
+</table>
+
+<div th:if = "${totalPages > 1}">
+<div class = "row col-sm-10">
+<div class = "col-sm-2">
+Total Rows: [[${totalItems}]]
+</div>
+<div class = "col-sm-1">
+<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+<a th:if="${currentPage != i}" th:href="@{'/page2/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+</span>
+</div>
+<div class = "col-sm-1">
+<a th:if="${currentPage < totalPages}" th:href="@{'/page2/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+<span th:unless="${currentPage < totalPages}">Next</span>
+</div>
+
+<div class="col-sm-1">
+    <a th:if="${currentPage < totalPages}" th:href="@{'/pag2e/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+<span th:unless="${currentPage < totalPages}">Last</span>
+    </div>
+</div>
+</div>
+</div>
+<a th:href = "@{/dashboard}"> <b>Return to Dashboard</b></a>
+</body>
+</html>
