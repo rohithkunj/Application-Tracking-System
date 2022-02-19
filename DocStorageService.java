@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import net.javaguides.springboot.model.Doc;
+import net.javaguides.springboot.model.Employee;
 import net.javaguides.springboot.repository.DocRepository;
-
 
 @Service
 public class DocStorageService {
@@ -33,4 +33,19 @@ public class DocStorageService {
   public List<Doc> getFiles(){
 	  return docRepository.findAll();
   }
+
+
+public void deleteDocById(int id) {
+	this. docRepository.deleteById(id);
+	
+}
+
+
+
+
+public List<Doc> getByKeyword(String keyword) {
+	// TODO Auto-generated method stub
+	return docRepository.findByKeyword(keyword);
+}
+
 }
