@@ -1,24 +1,38 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+
+    <title>Application Tracking System</title>
+<meta charset="UTF-8">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<title>Carousel</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+
+<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+</script>
+
+<script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+</script>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 
-body{
- 
-    border: 0;
-  
-    display: block;
-    max-width: 100%;
-    margin: 6px 0;
-    padding: 0px;
-    width: 82%;
-    height: 42px;
-    object-fit: contain;
-margin:0px;
-padding: 0px;
-background-color: #008080;
-overflow: hidden;
-font-family: system-ui;
-}
+
+
 .clearfix{
 clear: both;
 }
@@ -33,6 +47,47 @@ margin-left: 28px;
 color: #f7403b;
 }
 
+
+.carousel-inner img {
+width: 90%;
+height:500px;
+margin-right: 142px;
+    margin-left: 85px;
+
+}
+
+h3{
+height:100px;
+margin-block-start: 20em;
+    margin-block-end: 10em;
+    margin-inline-start: -531px;
+    margin-inline-end: 0px;
+position: absolute;
+    right: -6%;
+    bottom: 20px;
+    left: -11%;
+    z-index: 26;
+    padding-top: 45px;
+   
+    color: #fff;
+    text-align: center;
+}
+h4{
+height:100px;
+margin-block-start: 20em;
+    margin-block-end: 5em;
+    margin-inline-start: -450px;
+    margin-inline-end: 0px;
+position: absolute;
+    right: -6%;
+    bottom: 20px;
+    left: -11%;
+    z-index: 26;
+    padding-top: 45px;
+   
+    color: #fff;
+    text-align: center;
+}
 .sidenav {
   height: 100%;
   width: 300px;
@@ -145,9 +200,90 @@ background-color: #272c4a;
 height: 330px;
 
 }
+ marquee{
+      font-size: 30px;
+      font-weight: 800;
+      color: #8ebf42;
+      font-family: sans-serif;
+      }
 .nav2{
 display: none;
 }
+body{
+margin:0px;
+padding: 0px;
+background-color:#1b203d;
+overflow: hidden;
+font-family: system-ui;
+}
+.clearfix{
+clear: both;
+}
+.logo{
+margin: 0px;
+margin-left: 28px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 30px;
+}
+.logo span{
+color: #f7403b;
+}
+.sidenav {
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #272c4a;
+  overflow: hidden;
+  transition: 0.5s;
+  padding-top: 30px;
+}
+.sidenav a {
+  padding: 15px 8px 15px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+.sidenav a:hover {
+  color: #f1f1f1;
+  background-color:#1b203d;
+}
+.sidenav{
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+  margin-left: 300px;
+}
+.head{
+padding:20px;
+}
+
+
+.nav2{
+display: none;
+}
+
+
+@keyframes fill {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(126deg);
+  }
+}
+
+
 
 .box-8{
 margin-left: 10px;
@@ -206,83 +342,118 @@ color: var(--white);
 text-transform: uppercase;
 font-weight: 500;
 }
-h3{
 
- margin: 0;
- color:#fff;
-    padding: -14px;
-    display: block;
-    font-size: -7.83em;
-    margin-block-start: -24em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
 
 
 </style>
+
+
 <body>
 
 
 
 
+
+
 <div id="mySidenav" class="sidenav">
-
- <img src="https://ingrain.us/images/logo.png"alt="logo" class="img-responsive" >
-
+  <img src="https://www.ingrain.us/images/logo.png"><br>
 
 
 
 
+
+ 
+
+ 
   
   <a href="/listofapplicants"class="icon-a"><i class="fa fa-users icons"></i> &nbsp;&nbsp;List Of Candidates
 </a>
-  <a href="/showNewEmployeeForm"class="icon-a"><i class="fa fa-list icons"></i> &nbsp;&nbsp;Add candidate
+  <a href="/showNewEmployeeForm"class="icon-a"><i class="fa fa-user-plus"></i> &nbsp;&nbsp;Add candidate
 </a>
   <a href="/jobslist"class="icon-a"><i class="fa fa-shopping-bag icons"></i> &nbsp;&nbsp;List of jobs
 </a>
   <a href="/showNewScheduleInterviewForm"class="icon-a"><i class="fa fa-tasks icons"></i> &nbsp;&nbsp;Schedule Interviews
 </a>
-   <a href="/Home2"class="icon-a"><i class="fa fa-user icons"></i> &nbsp;&nbsp;Feedback
+ <a href="/view"class="icon-a"><i class="fa fa-tasks icons"></i> &nbsp;&nbsp;Scheduled Interviews
+</a>
+   <a href="/totalfeedback"class="icon-a"><i class="fa fa-user icons"></i> &nbsp;&nbsp;Feedback
 </a>
   <a href="/addfeedback"class="icon-a"><i class="fa fa-list-alt icons"></i> &nbsp;&nbsp;Add Feedback
 </a>  
+ <a href="/doct1"class="icon-a"><i class="fa fa-list-alt icons"></i> &nbsp;&nbsp;List Of Documents
+</a> 
+ <a href="/doct"class="icon-a"><i class="fa fa-list-alt icons"></i> &nbsp;&nbsp;Add Candidate Attachments
+</a>  
+ <a href="/"class="icon-a"><i class="fa fa-list-alt icons"></i> &nbsp;&nbsp;Log Out
+</a>  
+ 
 
 </div>
-
-
-
-<div class="clearfix"></div>
-</div>
-
-
-
-
 
 
 
 <div id="main">
-
+   
 <div class="head">
 <div class="col-div-6">
-   <marquee bgcolor="orange" direction = "right"> 
+<!-- <marquee bgcolor="orange" direction = "right"> 
       <div class="p-3 mb-2 bg-warning text-dark"><H4>WELCOME TO INGRAIN SYSTEMS</H4><div>
      </marquee>
    <marquee bgcolor="yellow" direction = "right"> 
       <div class="p-3 mb-2 bg-warning text-dark"><H4>INNOVATION AND EXCELLENCE </H4><div>
-     </marquee>
- 
-<span style="font-size:30px;cursor:pointer; color: white;" class="p-3 mb-2 bg-secondary text-white"  >&#9776; DashBoard</span>
+     </marquee> -->
+  
+  
 
+<span style="font-size:30px;cursor:pointer; color: white;" class="nav"  >&#9776; ApplicationTrackingSystem</span>
+<span style="font-size:30px;cursor:pointer; color: white;" class="nav2"  >&#9776; ApplicationTrackingSystem</span>
 
- 
+</div>
 </div>
 
+<div class="clearfix"></div><br><br><br><br>
 
 
+<div id="GFG" class="carousel slide" data-ride="carousel">
+<div class="carousel-inner">
+<div class="carousel-item active">
+<img src=
+"https://www.ingrain.us/images/ba4.png"
+alt="GFG" width="500" height="500">
 
+<div class="carousel-caption">
+<h3 class="text-warning">
+Connect Anything <br>Anywhere <br>
+</h3>
+<h4>Today, our high skilled professionals providing <br>  key services to<br> different client throughout the US.</h4>
+</div>
+</div>
 
+<div class="carousel-item">
+ <img src="https://www.ingrain.us/images/ba4.png">
+
+<div class="carousel-caption">
+<h3 class="text-warning">
+Connect Anything <br>Anywhere <br>
+</h3>
+<h4>Today, our high skilled professionals providing <br>  key services to<br> different client throughout the US.</h4>
+</div>
+</div>
+
+<div class="carousel-item">
+
+ <img src="https://www.ingrain.us/images/ba4.png">
+
+<div class="carousel-caption">
+<h3 class="text-warning">
+Connect Anything <br>Anywhere <br>
+<h4>Today, our high skilled professionals providing<br>  key services to<br> different client throughout the US.</h4>
+</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 
@@ -315,20 +486,13 @@ $(".nav2").click(function(){
  });
 
 </script>
-<div class="imageContainer" >
-	<img src="https://www.ingrain.us/images/ba4.png">">
-
-<h3>
-
-<div class="p-3 mb-2 bg-secondary text-white" ><h1>Connect Anything <br>Anywhere </h1></div> </h3>
 
 
-</div>
+
+
+
 
 </body>
 
 
-</html> 
-
-
-
+</html>
